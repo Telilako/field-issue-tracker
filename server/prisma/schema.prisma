@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Report {
+  id           String   @id @default(uuid())
+  ticketNo     Int      @unique @default(autoincrement())
+  category     String
+  description  String
+  latitude     Float?
+  longitude    Float?
+  locationText String?
+  priority     String
+  status       String
+  reportedBy   String
+  assignedTo   String?
+  reportedAt   DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  version      Int      @default(1)
+  events       ReportEvent[]
+
+  @@index([status])
+  @@index([priority])
+}
+
+model ReportEvent {
+  id         String   @id @default(uuid())
+  reportId   String
+  report     Report   @relation(fields: [reportId], references: [id])
+  type       String
+  actor      String
+  fromStatus String?
+  toStatus   String?
+  details    Json?
+  occurredAt DateTime
+  recordedAt DateTime @default(now())
+
+  @@index([reportId, recordedAt])
+}
