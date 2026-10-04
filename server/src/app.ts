@@ -1,6 +1,7 @@
 import express, { type NextFunction, type Request, type Response } from 'express';
 import cors from 'cors';
 import { syncRouter } from './syncRoute';
+import { reportsRouter } from './reportsRoute';
 
 export function createApp() {
   const app = express();
@@ -12,6 +13,7 @@ export function createApp() {
   });
 
   app.use('/api', syncRouter);
+  app.use('/api', reportsRouter);
 
   // Must come last. Turns any error into the standard { error: {...} } shape.
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
