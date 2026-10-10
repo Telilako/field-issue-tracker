@@ -82,3 +82,16 @@ button:disabled { opacity: 0.6; cursor: default; }
 .badge.sync-failed { background: #fde0e0; color: #8a1c1c; }
 .badge.priority-critical { background: #fde0e0; color: #8a1c1c; }
 .badge.priority-high { background: #ffe8d1; color: #8a4200; }
+
+.form { display: grid; gap: 14px; }
+.form h2 { margin: 0; }
+.form label { display: grid; gap: 6px; font-size: 0.95rem; }
+.form input, .form select, .form textarea {
+  font: inherit; padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: #fff;
+}
+.gps { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.form-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.form-actions button { flex: 1; }
+.notice { background: #fff1d6; color: #7a4b00; padding: 10px 12px; border-radius: 8px; margin: 0; }
+button.secondary { background: #e8ebf0; color: var(--text); }
+button.link { background: none; color: var(--primary); min-height: 0; padding: 0; text-decoration: underline; }

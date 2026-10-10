@@ -38,10 +38,28 @@ export interface LocalEvent {
   details?: string;
 }
 
+export interface CachedServerReport {
+  id: string;
+  data: unknown; // a ServerReport, stored as received
+  cachedAt: string;
+}
 export const db = new Dexie('field-issue-tracker') as Dexie & {
   reports: EntityTable<LocalReport, 'id'>;
   events: EntityTable<LocalEvent, 'id'>;
+  serverReports: EntityTable<CachedServerReport, 'id'>;
 };
+
+db.version(1).stores({
+  reports: 'id, workflowStatus, syncState, createdAt',
+  events: '++id, reportId, at',
+});
+
+// Version 2 adds a cache of the server's reports, so a coordinator still sees a list offline.
+db.version(2).stores({
+  reports: 'id, workflowStatus, syncState, createdAt',
+  events: '++id, reportId, at',
+  serverReports: 'id',
+});
 
 db.version(1).stores({
   reports: 'id, workflowStatus, syncState, createdAt',
