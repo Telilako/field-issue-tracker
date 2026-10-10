@@ -95,3 +95,18 @@ button:disabled { opacity: 0.6; cursor: default; }
 .notice { background: #fff1d6; color: #7a4b00; padding: 10px 12px; border-radius: 8px; margin: 0; }
 button.secondary { background: #e8ebf0; color: var(--text); }
 button.link { background: none; color: var(--primary); min-height: 0; padding: 0; text-decoration: underline; }
+
+
+.details h2 { margin: 12px 0 8px; }
+.details h3 { margin: 24px 0 8px; }
+.back { margin-bottom: 4px; }
+.notice button { margin-top: 8px; }
+.actions-box { margin: 16px 0; display: grid; gap: 10px; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+button.danger { background: #b3261e; }
+.reason { display: grid; gap: 10px; }
+.reason label { display: grid; gap: 6px; font-size: 0.95rem; }
+.reason textarea { font: inherit; padding: 10px; border: 1px solid var(--border); border-radius: 8px; }
+.timeline { list-style: none; margin: 0; padding: 0 0 0 12px; border-left: 3px solid var(--border); }
+.timeline li { padding: 0 0 14px 12px; }
+.timeline .when { display: block; color: var(--muted); font-size: 0.8rem; }

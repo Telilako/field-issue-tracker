@@ -6,9 +6,10 @@ import { ReportCard } from '../components/ReportCard';
 interface Props {
   onNew: () => void;
   onOpenDraft: (id: string) => void;
+  onOpenReport: (id: string) => void;
 }
 
-export function ReportList({ onNew, onOpenDraft }: Props) {
+export function ReportList({ onNew, onOpenDraft, onOpenReport }: Props) {
   const reports = useLocalReports();
   const [filter, setFilter] = useState('');
 
@@ -36,7 +37,7 @@ export function ReportList({ onNew, onOpenDraft }: Props) {
             <ReportCard
               key={r.id}
               report={r}
-              onOpen={r.workflowStatus === 'Draft' ? () => onOpenDraft(r.id) : undefined}
+              onOpen={r.workflowStatus === 'Draft' ? () => onOpenDraft(r.id) : () => onOpenReport(r.id)}
             />
           ))}
         </ul>
